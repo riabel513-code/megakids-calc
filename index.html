@@ -9,24 +9,22 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;color:#1a1a1a;padding:24px 18px;max-width:720px;margin:0 auto;font-size:14px}
 
-.admin{background:#f0faf6;border:1px solid #b2dfd0;border-radius:10px;padding:14px 16px;margin-bottom:22px}
-.admin-title{font-size:11px;font-weight:700;color:#0F6E56;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-.arow{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
-.arow label{font-size:13px;color:#444;min-width:150px}
-.arow input[type=text]{border:1px solid #cde8df;border-radius:7px;padding:7px 11px;font-size:13px;flex:1;min-width:180px;outline:none;background:#fff}
-.arow input[type=text]:focus{border-color:#1D9E75}
-.admin-note{font-size:11px;color:#5a9e85;margin-top:2px}
+/* ADMIN */
 
+
+/* HEADER */
 .badge{font-size:11px;font-weight:700;color:#0F6E56;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
 h1{font-size:20px;font-weight:700;color:#111;margin-bottom:5px;line-height:1.3}
 .sub{font-size:13px;color:#666;margin-bottom:18px;line-height:1.5}
-.sec{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.07em;margin:18px 0 8px}
 
+/* CITY */
+.sec{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.07em;margin:18px 0 8px}
 .city-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
 .cbtn{padding:6px 14px;border:1px solid #ddd;border-radius:20px;font-size:13px;cursor:pointer;background:#fff;color:#555;transition:all .18s}
 .cbtn:hover{border-color:#1D9E75;color:#1D9E75}
 .cbtn.on{background:#1D9E75;color:#fff;border-color:#1D9E75}
 
+/* SLIDERS */
 .sl-row{display:flex;align-items:center;gap:10px;margin-bottom:11px}
 .sl-row label{font-size:13px;color:#555;flex:1;min-width:140px}
 .sl-row input[type=range]{flex:2;accent-color:#1D9E75;cursor:pointer}
@@ -34,21 +32,25 @@ h1{font-size:20px;font-weight:700;color:#111;margin-bottom:5px;line-height:1.3}
 
 hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 
+/* TABLE-STYLE EDITABLE ROWS */
 .tbl{width:100%;border-collapse:collapse;margin-bottom:4px}
 .tbl th{font-size:11px;color:#aaa;font-weight:600;text-align:left;padding:3px 6px 6px;border-bottom:1px solid #eee}
 .tbl th.r{text-align:right}
 .tbl td{padding:4px 6px;border-bottom:1px solid #f5f5f5;vertical-align:middle}
 .tbl tr:last-child td{border-bottom:none}
 .tbl .name{font-size:13px;color:#444;min-width:130px}
-.tbl .qty-inp,.tbl .rate-inp{border:1px solid #e8e8e8;border-radius:6px;padding:5px 8px;font-size:13px;text-align:right;background:#fafafa;outline:none;transition:border .15s}
+.tbl .qty-inp, .tbl .rate-inp{border:1px solid #e8e8e8;border-radius:6px;padding:5px 8px;font-size:13px;text-align:right;background:#fafafa;outline:none;transition:border .15s}
 .tbl .qty-inp{width:52px}
 .tbl .rate-inp{width:110px}
-.tbl .qty-inp:focus,.tbl .rate-inp:focus{border-color:#1D9E75;background:#fff}
+.tbl .qty-inp:focus, .tbl .rate-inp:focus{border-color:#1D9E75;background:#fff}
 .tbl .sub-total{font-size:13px;font-weight:600;color:#111;text-align:right;min-width:100px}
 .tbl .total-row td{border-top:2px solid #1D9E75;padding-top:7px;padding-bottom:7px;font-weight:700}
 .tbl .total-row .name{color:#0F6E56}
 .tbl .total-row .sub-total{color:#0F6E56;font-size:14px}
+.tbl .royalty-row td{color:#888;font-style:italic}
+.tbl .royalty-row .sub-total{color:#888}
 
+/* METRICS */
 .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:14px 0}
 @media(min-width:480px){.metrics{grid-template-columns:repeat(4,1fr)}}
 .mc{background:#f7f7f5;border-radius:10px;padding:12px 14px}
@@ -57,29 +59,37 @@ hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 .mc .ms{font-size:11px;color:#888;margin-top:2px}
 .mc.hi .mv{color:#0F6E56}
 .mc.warn .mv{color:#BA7517}
+.mc.red .mv{color:#A32D2D}
 
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0}
 .stat-label{font-size:12px;color:#888;margin-bottom:3px}
 .stat-val{font-size:16px;font-weight:700}
 
+/* CHART */
 .chart-wrap{position:relative;width:100%;height:185px;margin:12px 0}
 
+/* INFO */
 .info-box{background:#f0faf6;border-left:3px solid #1D9E75;border-radius:0 8px 8px 0;padding:11px 14px;margin:12px 0;font-size:12px;color:#444;line-height:1.7}
 .info-box b{color:#0F6E56}
 
+/* CTA */
 .cta{display:block;width:100%;padding:15px;background:#1D9E75;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-align:center;margin-top:18px;transition:background .2s;text-decoration:none}
 .cta:hover{background:#0F6E56}
 .footer-note{font-size:11px;color:#ccc;text-align:center;margin-top:10px}
+
 .royalty-note{font-size:11px;color:#999;margin-top:4px;padding:0 6px}
 </style>
 </head>
 <body>
+
+<!-- ADMIN -->
 
 
 <div class="badge">Финансовая модель · Казахстан</div>
 <h1>Калькулятор прибыли детского сада</h1>
 <div class="sub">Все суммы можно отредактировать под ваш город. Расчёт в реальном времени.</div>
 
+<!-- CITY -->
 <div class="sec">Масштаб города</div>
 <div class="city-row">
   <button class="cbtn" onclick="applyCity('small',this)">Малый город</button>
@@ -88,6 +98,7 @@ hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
   <button class="cbtn on" onclick="applyCity('almaty',this)">Алматы / Астана</button>
 </div>
 
+<!-- ДОХОДЫ -->
 <div class="sec">Доходная часть</div>
 <div class="sl-row">
   <label>Детей (гос. дотация)</label>
@@ -126,8 +137,9 @@ hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 </div>
 
 <hr/>
+<!-- ФОТ -->
 <div class="sec">ФОТ — фонд оплаты труда <span id="fotTotal" style="color:#0F6E56;text-transform:none;font-weight:700;letter-spacing:0"></span></div>
-<table class="tbl">
+<table class="tbl" id="fotTable">
   <thead><tr>
     <th>Должность</th>
     <th class="r" style="width:58px">Кол-во</th>
@@ -138,8 +150,9 @@ hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 </table>
 
 <hr/>
+<!-- ОБСЛУЖИВАНИЕ -->
 <div class="sec">Обслуживание д/сада <span id="obsTotal" style="color:#0F6E56;text-transform:none;font-weight:700;letter-spacing:0"></span></div>
-<table class="tbl">
+<table class="tbl" id="obsTable">
   <thead><tr>
     <th>Статья</th>
     <th class="r" style="width:130px">Сумма ₸</th>
@@ -149,6 +162,7 @@ hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 <div class="royalty-note">* Роялти (6%) = <span id="royaltyAmt">—</span> — рассчитывается от максимального дохода, отображается справочно</div>
 
 <hr/>
+<!-- ПИТАНИЕ -->
 <div class="sec">Для детей</div>
 <table class="tbl">
   <thead><tr><th>Статья</th><th class="r" style="width:130px">Сумма ₸</th></tr></thead>
@@ -161,6 +175,7 @@ hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 </table>
 
 <hr/>
+<!-- РЕЗУЛЬТАТЫ -->
 <div class="sec">Результат · <span id="cityLabel" style="color:#111;text-transform:none;letter-spacing:0;font-weight:700">Алматы / Астана</span></div>
 
 <div class="metrics">
@@ -197,7 +212,7 @@ hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 </div>
 
 <div class="chart-wrap">
-  <canvas id="chart" role="img" aria-label="Прогноз прибыли по месяцам">Прогноз по месяцам</canvas>
+  <canvas id="chart" role="img" aria-label="Прогноз прибыли по месяцам (сентябрь–август)">Прогноз по месяцам</canvas>
 </div>
 
 <div class="info-box">
@@ -208,10 +223,11 @@ hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
   Роялти = 6% от макс. дохода — справочно, не вычитается из расходов
 </div>
 
-<a class="cta" id="ctaBtn" href="#">Получить полный бизнес-план →</a>
+<a class="cta" id="ctaBtn" href="#">Получить полный бизнес-план для моего города →</a>
 <div class="footer-note">На основе реальной финансовой модели Mega Kids · до 50 детей</div>
 
 <script>
+// ── CITY PRESETS ──
 const CITIES = {
   small:{
     label:'Малый город', dotKids:25, parentFee:65000, govDot:22000, comKids:3, comFee:85000, entryFee:30000,
@@ -239,16 +255,17 @@ const CITIES = {
   }
 };
 
+// ── STATE ──
 let state = {};
 
 function initState(city) {
   const c = CITIES[city];
   state = {
-    dotKids:c.dotKids, parentFee:c.parentFee, govDot:c.govDot,
-    comKids:c.comKids, comFee:c.comFee, entryFee:c.entryFee,
-    fot:JSON.parse(JSON.stringify(c.fot)),
-    obs:{...c.obs},
-    food:c.food
+    dotKids: c.dotKids, parentFee: c.parentFee, govDot: c.govDot,
+    comKids: c.comKids, comFee: c.comFee, entryFee: c.entryFee,
+    fot: JSON.parse(JSON.stringify(c.fot)),
+    obs: {...c.obs},
+    food: c.food
   };
 }
 
@@ -257,31 +274,41 @@ function applyCity(key, btn) {
   btn.classList.add('on');
   document.getElementById('cityLabel').textContent = CITIES[key].label;
   initState(key);
-  setSlider('dotKids',state.dotKids); setSlider('parentFee',state.parentFee);
-  setSlider('govDot',state.govDot);   setSlider('comKids',state.comKids);
-  setSlider('comFee',state.comFee);   setSlider('entryFee',state.entryFee);
-  setSlider('occ',100);
+  // sliders
+  setSlider('dotKids', state.dotKids);
+  setSlider('parentFee', state.parentFee);
+  setSlider('govDot', state.govDot);
+  setSlider('comKids', state.comKids);
+  setSlider('comFee', state.comFee);
+  setSlider('entryFee', state.entryFee);
+  setSlider('occ', 100);
+  // food
   document.getElementById('food').value = state.food;
-  renderFOT(); renderObs(); recalc();
+  renderFOT();
+  renderObs();
+  recalc();
 }
 
-function setSlider(id,val){ document.getElementById(id).value=val; }
+function setSlider(id, val) {
+  document.getElementById(id).value = val;
+}
 
+// ── RENDER FOT TABLE ──
 const FOT_DEFS = [
-  {key:'admin', label:'Администратор',  hasQty:false},
-  {key:'vospit',label:'Воспитатель',    hasQty:true},
-  {key:'nyanya',label:'Няня',           hasQty:true},
-  {key:'povar', label:'Повар',          hasQty:false},
-  {key:'med',   label:'Медсестра',      hasQty:false},
-  {key:'karat', label:'Карате',         hasQty:false},
-  {key:'muz',   label:'Музыкант',       hasQty:false},
-  {key:'horeog',label:'Хореограф',      hasQty:false},
-  {key:'logop', label:'Логопед',        hasQty:false},
-  {key:'buh',   label:'Бухгалтер',      hasQty:false},
-  {key:'teh',   label:'Тех. персонал',  hasQty:false},
-  {key:'eng',   label:'Английский',     hasQty:false},
-  {key:'smm',   label:'SMM',            hasQty:false},
-  {key:'ohrana',label:'Охрана',         hasQty:false},
+  { key:'admin',  label:'Администратор',  hasQty:false },
+  { key:'vospit', label:'Воспитатель',    hasQty:true  },
+  { key:'nyanya', label:'Няня',           hasQty:true  },
+  { key:'povar',  label:'Повар',          hasQty:false },
+  { key:'med',    label:'Медсестра',      hasQty:false },
+  { key:'karat',  label:'Карате',         hasQty:false },
+  { key:'muz',    label:'Музыкант',       hasQty:false },
+  { key:'horeog', label:'Хореограф',      hasQty:false },
+  { key:'logop',  label:'Логопед',        hasQty:false },
+  { key:'buh',    label:'Бухгалтер',      hasQty:false },
+  { key:'teh',    label:'Тех. персонал',  hasQty:false },
+  { key:'eng',    label:'Английский',     hasQty:false },
+  { key:'smm',    label:'SMM',            hasQty:false },
+  { key:'ohrana', label:'Охрана',         hasQty:false },
 ];
 
 function renderFOT() {
@@ -290,14 +317,17 @@ function renderFOT() {
   FOT_DEFS.forEach(def => {
     const tr = document.createElement('tr');
     if (def.hasQty) {
-      const [qty,rate] = state.fot[def.key];
-      tr.innerHTML = `<td class="name">${def.label}</td>
+      const [qty, rate] = state.fot[def.key];
+      const total = qty * rate;
+      tr.innerHTML = `
+        <td class="name">${def.label}</td>
         <td style="text-align:right"><input class="qty-inp" type="number" min="1" max="20" value="${qty}" oninput="updateFotQty('${def.key}',this.value)"/></td>
         <td style="text-align:right"><input class="rate-inp" type="number" min="0" step="5000" value="${rate}" oninput="updateFotRate('${def.key}',this.value)"/></td>
-        <td class="sub-total" id="fot_${def.key}">${fmt(qty*rate)}</td>`;
+        <td class="sub-total" id="fot_${def.key}">${fmt(total)}</td>`;
     } else {
       const amt = state.fot[def.key];
-      tr.innerHTML = `<td class="name">${def.label}</td>
+      tr.innerHTML = `
+        <td class="name">${def.label}</td>
         <td style="text-align:right;color:#ccc;font-size:12px">1</td>
         <td style="text-align:right"><input class="rate-inp" type="number" min="0" step="5000" value="${amt}" oninput="updateFotFixed('${def.key}',this.value)"/></td>
         <td class="sub-total" id="fot_${def.key}">${fmt(amt)}</td>`;
@@ -306,127 +336,160 @@ function renderFOT() {
   });
 }
 
-function updateFotQty(key,val){state.fot[key][0]=+val||1;refreshFotRow(key);recalc();}
-function updateFotRate(key,val){state.fot[key][1]=+val||0;refreshFotRow(key);recalc();}
-function updateFotFixed(key,val){state.fot[key]=+val||0;refreshFotRow(key);recalc();}
-function refreshFotRow(key){
-  const el=document.getElementById('fot_'+key); if(!el)return;
-  const v=state.fot[key];
-  el.textContent=fmt(Array.isArray(v)?v[0]*v[1]:v);
-}
-function calcFOT(){
-  return FOT_DEFS.reduce((s,def)=>{const v=state.fot[def.key];return s+(Array.isArray(v)?v[0]*v[1]:v);},0);
+function updateFotQty(key, val) { state.fot[key][0] = +val||1; refreshFotRow(key); recalc(); }
+function updateFotRate(key, val) { state.fot[key][1] = +val||0; refreshFotRow(key); recalc(); }
+function updateFotFixed(key, val) { state.fot[key] = +val||0; refreshFotRow(key); recalc(); }
+
+function refreshFotRow(key) {
+  const el = document.getElementById('fot_'+key);
+  if (!el) return;
+  const v = state.fot[key];
+  el.textContent = fmt(Array.isArray(v) ? v[0]*v[1] : v);
 }
 
+function calcFOT() {
+  return FOT_DEFS.reduce((s, def) => {
+    const v = state.fot[def.key];
+    return s + (Array.isArray(v) ? v[0]*v[1] : v);
+  }, 0);
+}
+
+// ── RENDER OBS TABLE ──
 const OBS_DEFS = [
-  {key:'kom',    label:'Коммунальные услуги'},
-  {key:'inet',   label:'Интернет'},
-  {key:'ksk',    label:'КСК'},
-  {key:'reklama',label:'Реклама'},
-  {key:'khoz',   label:'Закуп хозтоваров'},
-  {key:'kancl',  label:'Закуп канцелярии'},
-  {key:'nalog',  label:'Налог'},
-  {key:'indigo', label:'Индиго'},
-  {key:'kredit', label:'Кредит на помещение / аренда'},
+  { key:'kom',     label:'Коммунальные услуги' },
+  { key:'inet',    label:'Интернет'            },
+  { key:'ksk',     label:'КСК'                 },
+  { key:'reklama', label:'Реклама'             },
+  { key:'khoz',    label:'Закуп хозтоваров'    },
+  { key:'kancl',   label:'Закуп канцелярии'    },
+  { key:'nalog',   label:'Налог'               },
+  { key:'indigo',  label:'Индиго'              },
+  { key:'kredit',  label:'Кредит на помещение / аренда' },
 ];
 
-function renderObs(){
-  const tbody=document.getElementById('obsBody');
-  tbody.innerHTML='';
-  OBS_DEFS.forEach(def=>{
-    const tr=document.createElement('tr');
-    tr.innerHTML=`<td class="name">${def.label}</td>
+function renderObs() {
+  const tbody = document.getElementById('obsBody');
+  tbody.innerHTML = '';
+  OBS_DEFS.forEach(def => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="name">${def.label}</td>
       <td style="text-align:right"><input class="rate-inp" type="number" min="0" step="10000" value="${state.obs[def.key]}" oninput="updateObs('${def.key}',this.value)"/></td>`;
     tbody.appendChild(tr);
   });
 }
 
-function updateObs(key,val){state.obs[key]=+val||0;recalc();}
-function calcObs(){return OBS_DEFS.reduce((s,def)=>s+(state.obs[def.key]||0),0);}
-function fmt(n){return Math.round(n).toLocaleString('ru-RU')+' ₸';}
+function updateObs(key, val) { state.obs[key] = +val||0; recalc(); }
 
-let chart=null;
+function calcObs() {
+  return OBS_DEFS.reduce((s, def) => s + (state.obs[def.key]||0), 0);
+}
 
-function recalc(){
-  const dotKids  =+document.getElementById('dotKids').value;
-  const parentFee=+document.getElementById('parentFee').value;
-  const govDot   =+document.getElementById('govDot').value;
-  const comKids  =+document.getElementById('comKids').value;
-  const comFee   =+document.getElementById('comFee').value;
-  const entryFee =+document.getElementById('entryFee').value;
-  const occ      =+document.getElementById('occ').value/100;
-  const food     =+document.getElementById('food').value||0;
-  state.food=food;
+// ── FORMAT ──
+function fmt(n) { return Math.round(n).toLocaleString('ru-RU') + ' ₸'; }
 
-  document.getElementById('dotKidsV').textContent  =dotKids+' дет.';
-  document.getElementById('parentFeeV').textContent=Math.round(parentFee).toLocaleString('ru-RU')+' ₸';
-  document.getElementById('govDotV').textContent   =Math.round(govDot).toLocaleString('ru-RU')+' ₸';
-  document.getElementById('comKidsV').textContent  =comKids+' дет.';
-  document.getElementById('comFeeV').textContent   =Math.round(comFee).toLocaleString('ru-RU')+' ₸';
-  document.getElementById('entryFeeV').textContent =Math.round(entryFee).toLocaleString('ru-RU')+' ₸';
-  document.getElementById('occV').textContent      =Math.round(occ*100)+'%';
+// ── CHART ──
+let chart = null;
 
-  const totalKids  = dotKids+comKids;
-  const revMax     = dotKids*(parentFee+govDot)+comKids*comFee;
-  const rev85      = revMax*0.85;
-  const entryTotal = totalKids*entryFee;
-  const royalty    = Math.round(revMax*0.06);
-  document.getElementById('royaltyAmt').textContent=fmt(royalty);
+// ── MAIN RECALC ──
+function recalc() {
+  const dotKids   = +document.getElementById('dotKids').value;
+  const parentFee = +document.getElementById('parentFee').value;
+  const govDot    = +document.getElementById('govDot').value;
+  const comKids   = +document.getElementById('comKids').value;
+  const comFee    = +document.getElementById('comFee').value;
+  const entryFee  = +document.getElementById('entryFee').value;
+  const occ       = +document.getElementById('occ').value / 100;
+  const food      = +document.getElementById('food').value || 0;
 
-  const fotSum  = calcFOT();
-  const obsSum  = calcObs();
-  const totalExp= fotSum+obsSum+food;
+  state.food = food;
 
-  document.getElementById('fotTotal').textContent='— '+fmt(fotSum);
-  document.getElementById('obsTotal').textContent='— '+fmt(obsSum);
+  // readouts
+  document.getElementById('dotKidsV').textContent   = dotKids + ' дет.';
+  document.getElementById('parentFeeV').textContent = Math.round(parentFee).toLocaleString('ru-RU') + ' ₸';
+  document.getElementById('govDotV').textContent    = Math.round(govDot).toLocaleString('ru-RU') + ' ₸';
+  document.getElementById('comKidsV').textContent   = comKids + ' дет.';
+  document.getElementById('comFeeV').textContent    = Math.round(comFee).toLocaleString('ru-RU') + ' ₸';
+  document.getElementById('entryFeeV').textContent  = Math.round(entryFee).toLocaleString('ru-RU') + ' ₸';
+  document.getElementById('occV').textContent       = Math.round(occ*100) + '%';
 
-  const profit100=revMax-totalExp;
-  const profit85 =rev85-totalExp;
-  const margin100=revMax>0?Math.round((profit100/revMax)*100):0;
-  const annual   =profit100*12;
+  const totalKids = dotKids + comKids;
 
-  document.getElementById('revMax').textContent    =fmt(revMax);
-  document.getElementById('revKids').textContent   =totalKids+' детей · '+Math.round(occ*100)+'%';
-  document.getElementById('expTotal').textContent  =fmt(totalExp);
-  document.getElementById('profit100').textContent =fmt(profit100);
-  document.getElementById('margin100').textContent ='маржа '+margin100+'%';
-  document.getElementById('profit85').textContent  =fmt(profit85);
-  document.getElementById('annual').textContent    =fmt(annual);
-  document.getElementById('entryTotal').textContent=fmt(entryTotal);
+  // ДОХОДЫ (формула из таблицы)
+  const revDot    = dotKids * (parentFee + govDot);   // оплата родителей + дотация
+  const revCom    = comKids * comFee;
+  const revMax    = revDot + revCom;                   // итого максимальный доход
+  const rev85     = revMax * 0.85;                     // 85% заполняемость
+  const revCur    = revMax * occ;                      // текущая заполняемость
+  const entryTotal = totalKids * entryFee;             // вступительный взнос разово
 
-  const months=['Сен','Окт','Ноя','Дек','Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг'];
-  const seas  =[1.0,1.0,0.98,0.95,0.90,0.92,0.95,0.95,0.85,0.70,0.60,0.75];
-  const data  =seas.map(s=>Math.round(profit100*s));
+  // РОЯЛТИ (6% от макс. дохода, справочно)
+  const royalty = Math.round(revMax * 0.06);
+  document.getElementById('royaltyAmt').textContent = fmt(royalty);
 
-  if(chart){
-    chart.data.datasets[0].data=data;
-    chart.data.datasets[0].backgroundColor=data.map(v=>v>=0?'#1D9E75':'#E24B4A');
+  // РАСХОДЫ
+  const fotSum = calcFOT();
+  const obsSum = calcObs();
+  const totalExp = fotSum + obsSum + food; // формула из файла: ФОТ + обслуживание + питание (роялти не входит)
+
+  // ИТОГИ СЕКЦИЙ
+  document.getElementById('fotTotal').textContent = '— ' + fmt(fotSum);
+  document.getElementById('obsTotal').textContent = '— ' + fmt(obsSum);
+
+  // ПРИБЫЛЬ
+  const profit100 = revMax - totalExp;
+  const profit85  = rev85  - totalExp;
+  const margin100 = revMax > 0 ? Math.round((profit100/revMax)*100) : 0;
+  const annual    = profit100 * 12;
+
+  // UPDATE METRICS
+  document.getElementById('revMax').textContent    = fmt(revMax);
+  document.getElementById('revKids').textContent   = totalKids + ' детей · ' + Math.round(occ*100) + '%';
+  document.getElementById('expTotal').textContent  = fmt(totalExp);
+  document.getElementById('profit100').textContent = fmt(profit100);
+  document.getElementById('margin100').textContent = 'маржа ' + margin100 + '%';
+  document.getElementById('profit85').textContent  = fmt(profit85);
+  document.getElementById('annual').textContent    = fmt(annual);
+  document.getElementById('entryTotal').textContent = fmt(entryTotal);
+
+  // CHART
+  const months = ['Сен','Окт','Ноя','Дек','Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг'];
+  const seas   = [1.0, 1.0, 0.98, 0.95, 0.90, 0.92, 0.95, 0.95, 0.85, 0.70, 0.60, 0.75];
+  const data   = seas.map(s => Math.round(profit100 * s));
+
+  if (chart) {
+    chart.data.datasets[0].data = data;
+    chart.data.datasets[0].backgroundColor = data.map(v => v>=0?'#1D9E75':'#E24B4A');
     chart.update();
   } else {
-    chart=new Chart(document.getElementById('chart'),{
+    chart = new Chart(document.getElementById('chart'), {
       type:'bar',
-      data:{labels:months,datasets:[{label:'Прибыль',data,backgroundColor:data.map(v=>v>=0?'#1D9E75':'#E24B4A'),borderRadius:4}]},
+      data:{ labels:months, datasets:[{ label:'Прибыль', data, backgroundColor:data.map(v=>v>=0?'#1D9E75':'#E24B4A'), borderRadius:4 }] },
       options:{
-        responsive:true,maintainAspectRatio:false,
-        plugins:{legend:{display:false}},
+        responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{ display:false } },
         scales:{
-          x:{grid:{display:false},ticks:{font:{size:11}}},
-          y:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},callback:v=>{const a=Math.abs(Math.round(v/1000));return(v<0?'-':'')+a+'K ₸';}}}
+          x:{ grid:{display:false}, ticks:{font:{size:11}} },
+          y:{ grid:{color:'rgba(0,0,0,0.05)'}, ticks:{font:{size:10}, callback:v=>{ const a=Math.abs(Math.round(v/1000)); return (v<0?'-':'')+a+'K ₸'; } } }
         }
       }
     });
   }
 }
 
-document.getElementById('ctaBtn').addEventListener('click',e=>{
+// ── CTA ──
+document.getElementById('ctaBtn').addEventListener('click', e=>{
   e.preventDefault();
-  const wa  =document.getElementById('waNumber').value.replace(/\D/g,'');
-  const city=document.getElementById('cityLabel').textContent;
-  const p100=document.getElementById('profit100').textContent;
-  const msg =encodeURIComponent('Здравствуйте! Рассчитал прибыль детского сада в городе '+city+'. Прибыль 100%: '+p100+'. Хочу получить полный бизнес-план.');
-  window.open('https://wa.me/77776557093'+wa+'?text='+msg,'_blank');
+  const city = document.getElementById('cityLabel').textContent;
+  const p100 = document.getElementById('profit100').textContent;
+  const msg  = encodeURIComponent(
+    'Здравствуйте! Рассчитал прибыль детского сада в городе ' + city +
+    '. Прибыль 100%: ' + p100 + '. Хочу получить полный бизнес-план.'
+  );
+  window.open('https://wa.me/77776557093?text=' + msg, '_blank');
 });
 
+// ── INIT ──
 initState('almaty');
 renderFOT();
 renderObs();
