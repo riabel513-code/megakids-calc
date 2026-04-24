@@ -3,109 +3,121 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Калькулятор прибыли детского сада — Mega Kids</title>
+<title>Калькулятор прибыли — Mega Kids</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;color:#1a1a1a;padding:32px 24px;max-width:720px;margin:0 auto}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;color:#1a1a1a;padding:24px 18px;max-width:720px;margin:0 auto;font-size:14px}
 
-  .badge{font-size:11px;font-weight:600;color:#0F6E56;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
-  h1{font-size:22px;font-weight:600;color:#111;margin-bottom:6px;line-height:1.3}
-  .sub{font-size:14px;color:#666;margin-bottom:20px;line-height:1.5}
+.admin{background:#f0faf6;border:1px solid #b2dfd0;border-radius:10px;padding:14px 16px;margin-bottom:22px}
+.admin-title{font-size:11px;font-weight:700;color:#0F6E56;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.arow{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.arow label{font-size:13px;color:#444;min-width:150px}
+.arow input[type=text]{border:1px solid #cde8df;border-radius:7px;padding:7px 11px;font-size:13px;flex:1;min-width:180px;outline:none;background:#fff}
+.arow input[type=text]:focus{border-color:#1D9E75}
+.admin-note{font-size:11px;color:#5a9e85;margin-top:2px}
 
-  .sec{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.07em;margin:20px 0 10px}
+.badge{font-size:11px;font-weight:700;color:#0F6E56;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+h1{font-size:20px;font-weight:700;color:#111;margin-bottom:5px;line-height:1.3}
+.sub{font-size:13px;color:#666;margin-bottom:18px;line-height:1.5}
+.sec{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.07em;margin:18px 0 8px}
 
-  .city-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-  .cbtn{padding:7px 16px;border:1px solid #ddd;border-radius:20px;font-size:13px;cursor:pointer;background:#fff;color:#555;transition:all .2s}
-  .cbtn:hover{border-color:#1D9E75;color:#1D9E75}
-  .cbtn.on{background:#1D9E75;color:#fff;border-color:#1D9E75}
+.city-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.cbtn{padding:6px 14px;border:1px solid #ddd;border-radius:20px;font-size:13px;cursor:pointer;background:#fff;color:#555;transition:all .18s}
+.cbtn:hover{border-color:#1D9E75;color:#1D9E75}
+.cbtn.on{background:#1D9E75;color:#fff;border-color:#1D9E75}
 
-  input.city-name{border:1px solid #ddd;border-radius:8px;padding:9px 14px;font-size:14px;width:100%;margin-bottom:12px;outline:none;transition:border .2s}
-  input.city-name:focus{border-color:#1D9E75}
+.sl-row{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.sl-row label{font-size:13px;color:#555;flex:1;min-width:140px}
+.sl-row input[type=range]{flex:2;accent-color:#1D9E75;cursor:pointer}
+.sl-row .v{font-size:13px;font-weight:600;min-width:110px;text-align:right;color:#111}
 
-  .sl-row{display:flex;align-items:center;gap:10px;margin-bottom:13px}
-  .sl-row label{font-size:13px;color:#555;flex:1;min-width:140px}
-  .sl-row input[type=range]{flex:2;accent-color:#1D9E75;cursor:pointer}
-  .sl-row .v{font-size:13px;font-weight:600;min-width:120px;text-align:right;color:#111}
+hr{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 
-  hr{border:none;border-top:1px solid #f0f0f0;margin:20px 0}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:4px}
+.tbl th{font-size:11px;color:#aaa;font-weight:600;text-align:left;padding:3px 6px 6px;border-bottom:1px solid #eee}
+.tbl th.r{text-align:right}
+.tbl td{padding:4px 6px;border-bottom:1px solid #f5f5f5;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl .name{font-size:13px;color:#444;min-width:130px}
+.tbl .qty-inp,.tbl .rate-inp{border:1px solid #e8e8e8;border-radius:6px;padding:5px 8px;font-size:13px;text-align:right;background:#fafafa;outline:none;transition:border .15s}
+.tbl .qty-inp{width:52px}
+.tbl .rate-inp{width:110px}
+.tbl .qty-inp:focus,.tbl .rate-inp:focus{border-color:#1D9E75;background:#fff}
+.tbl .sub-total{font-size:13px;font-weight:600;color:#111;text-align:right;min-width:100px}
+.tbl .total-row td{border-top:2px solid #1D9E75;padding-top:7px;padding-bottom:7px;font-weight:700}
+.tbl .total-row .name{color:#0F6E56}
+.tbl .total-row .sub-total{color:#0F6E56;font-size:14px}
 
-  .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
-  @media(min-width:500px){.metrics{grid-template-columns:repeat(4,1fr)}}
-  .mc{background:#f7f7f5;border-radius:10px;padding:14px 16px}
-  .mc .ml{font-size:11px;color:#888;margin-bottom:6px}
-  .mc .mv{font-size:17px;font-weight:700;color:#111}
-  .mc .ms{font-size:11px;color:#888;margin-top:3px}
-  .mc.hi .mv{color:#0F6E56}
-  .mc.warn .mv{color:#BA7517}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:14px 0}
+@media(min-width:480px){.metrics{grid-template-columns:repeat(4,1fr)}}
+.mc{background:#f7f7f5;border-radius:10px;padding:12px 14px}
+.mc .ml{font-size:11px;color:#888;margin-bottom:4px}
+.mc .mv{font-size:16px;font-weight:700;color:#111}
+.mc .ms{font-size:11px;color:#888;margin-top:2px}
+.mc.hi .mv{color:#0F6E56}
+.mc.warn .mv{color:#BA7517}
 
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
-  .stat-label{font-size:12px;color:#888;margin-bottom:4px}
-  .stat-val{font-size:17px;font-weight:700}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0}
+.stat-label{font-size:12px;color:#888;margin-bottom:3px}
+.stat-val{font-size:16px;font-weight:700}
 
-  .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
-  .er{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid #f0f0f0}
-  .er .en{color:#666}
-  .er .ev{color:#111;font-weight:600}
+.chart-wrap{position:relative;width:100%;height:185px;margin:12px 0}
 
-  .pb-wrap{margin:10px 0 4px}
-  .pb-bar{height:8px;border-radius:4px;background:#f0f0f0;overflow:hidden}
-  .pb-fill{height:100%;background:#1D9E75;border-radius:4px;transition:width .3s}
-  .pb-note{display:flex;justify-content:space-between;font-size:11px;color:#aaa;margin-top:3px}
+.info-box{background:#f0faf6;border-left:3px solid #1D9E75;border-radius:0 8px 8px 0;padding:11px 14px;margin:12px 0;font-size:12px;color:#444;line-height:1.7}
+.info-box b{color:#0F6E56}
 
-  .chart-wrap{position:relative;width:100%;height:200px;margin:16px 0}
-
-  .note-box{background:#f0faf6;border-left:3px solid #1D9E75;border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:13px;color:#333;line-height:1.6}
-  .note-box strong{color:#0F6E56}
-
-  .cta{display:block;width:100%;padding:16px;background:#1D9E75;color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;text-align:center;margin-top:20px;transition:background .2s;text-decoration:none}
-  .cta:hover{background:#0F6E56}
-
-  .footer-note{font-size:11px;color:#aaa;text-align:center;margin-top:12px}
+.cta{display:block;width:100%;padding:15px;background:#1D9E75;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-align:center;margin-top:18px;transition:background .2s;text-decoration:none}
+.cta:hover{background:#0F6E56}
+.footer-note{font-size:11px;color:#ccc;text-align:center;margin-top:10px}
+.royalty-note{font-size:11px;color:#999;margin-top:4px;padding:0 6px}
 </style>
 </head>
 <body>
 
+
 <div class="badge">Финансовая модель · Казахстан</div>
 <h1>Калькулятор прибыли детского сада</h1>
-<div class="sub">Введите параметры вашего города — получите реальный расчёт за 30 секунд.<br>На основе финмодели Mega Kids · до 50 детей.</div>
-
-<input class="city-name" id="cityName" placeholder="Введите название вашего города" value="Алматы" oninput="recalc()"/>
+<div class="sub">Все суммы можно отредактировать под ваш город. Расчёт в реальном времени.</div>
 
 <div class="sec">Масштаб города</div>
 <div class="city-row">
   <button class="cbtn" onclick="applyCity('small',this)">Малый город</button>
-  <button class="cbtn" onclick="applyCity('medium',this)">Средний город</button>
-  <button class="cbtn" onclick="applyCity('large',this)">Крупный город</button>
+  <button class="cbtn" onclick="applyCity('medium',this)">Средний</button>
+  <button class="cbtn" onclick="applyCity('large',this)">Крупный</button>
   <button class="cbtn on" onclick="applyCity('almaty',this)">Алматы / Астана</button>
 </div>
 
-<div class="sec">Параметры сада</div>
-
+<div class="sec">Доходная часть</div>
 <div class="sl-row">
-  <label>Детей с гос. дотацией</label>
-  <input type="range" min="5" max="45" step="5" id="dotKids" value="45" oninput="recalc()"/>
-  <span class="v" id="dotKidsV">45 дет.</span>
+  <label>Детей (гос. дотация)</label>
+  <input type="range" min="1" max="50" step="1" id="dotKids" value="45" oninput="recalc()"/>
+  <span class="v" id="dotKidsV">45</span>
 </div>
 <div class="sl-row">
-  <label>Абонемент (с дотацией) ₸</label>
-  <input type="range" min="50000" max="200000" step="5000" id="dotFee" value="170000" oninput="recalc()"/>
-  <span class="v" id="dotFeeV">170 000 ₸</span>
+  <label>Абонемент (родители) ₸</label>
+  <input type="range" min="20000" max="300000" step="5000" id="parentFee" value="170000" oninput="recalc()"/>
+  <span class="v" id="parentFeeV">170 000 ₸</span>
 </div>
 <div class="sl-row">
-  <label>Гос. дотация на ребёнка ₸</label>
-  <input type="range" min="0" max="100000" step="5000" id="govDot" value="56000" oninput="recalc()"/>
-  <span class="v" id="govDotV">56 000 ₸</span>
+  <label>Гос. дотация / ребёнок ₸</label>
+  <input type="range" min="0" max="150000" step="1000" id="govDot" value="58000" oninput="recalc()"/>
+  <span class="v" id="govDotV">58 000 ₸</span>
 </div>
 <div class="sl-row">
   <label>Коммерческих детей</label>
   <input type="range" min="0" max="20" step="1" id="comKids" value="5" oninput="recalc()"/>
-  <span class="v" id="comKidsV">5 дет.</span>
+  <span class="v" id="comKidsV">5</span>
 </div>
 <div class="sl-row">
   <label>Коммерческий абонемент ₸</label>
-  <input type="range" min="100000" max="350000" step="10000" id="comFee" value="190000" oninput="recalc()"/>
+  <input type="range" min="50000" max="500000" step="5000" id="comFee" value="190000" oninput="recalc()"/>
   <span class="v" id="comFeeV">190 000 ₸</span>
+</div>
+<div class="sl-row">
+  <label>Вступит. взнос / ребёнок ₸</label>
+  <input type="range" min="0" max="200000" step="5000" id="entryFee" value="50000" oninput="recalc()"/>
+  <span class="v" id="entryFeeV">50 000 ₸</span>
 </div>
 <div class="sl-row">
   <label>Заполняемость сада</label>
@@ -114,243 +126,310 @@
 </div>
 
 <hr/>
-
-<div class="sec">Аренда и расходы</div>
-
-<div class="sl-row">
-  <label>Аренда помещения ₸/мес</label>
-  <input type="range" min="500000" max="6000000" step="100000" id="rent" value="3500000" oninput="recalc()"/>
-  <span class="v" id="rentV">3 500 000 ₸</span>
-</div>
-<div class="sl-row">
-  <label>ФОТ (все сотрудники) ₸</label>
-  <input type="range" min="1000000" max="5000000" step="100000" id="fot" value="2710000" oninput="recalc()"/>
-  <span class="v" id="fotV">2 710 000 ₸</span>
-</div>
-<div class="sl-row">
-  <label>Питание на 1 ребёнка ₸/мес</label>
-  <input type="range" min="8000" max="30000" step="1000" id="food" value="16000" oninput="recalc()"/>
-  <span class="v" id="foodV">16 000 ₸</span>
-</div>
+<div class="sec">ФОТ — фонд оплаты труда <span id="fotTotal" style="color:#0F6E56;text-transform:none;font-weight:700;letter-spacing:0"></span></div>
+<table class="tbl">
+  <thead><tr>
+    <th>Должность</th>
+    <th class="r" style="width:58px">Кол-во</th>
+    <th class="r" style="width:120px">Ставка ₸</th>
+    <th class="r" style="width:110px">Итого ₸</th>
+  </tr></thead>
+  <tbody id="fotBody"></tbody>
+</table>
 
 <hr/>
+<div class="sec">Обслуживание д/сада <span id="obsTotal" style="color:#0F6E56;text-transform:none;font-weight:700;letter-spacing:0"></span></div>
+<table class="tbl">
+  <thead><tr>
+    <th>Статья</th>
+    <th class="r" style="width:130px">Сумма ₸</th>
+  </tr></thead>
+  <tbody id="obsBody"></tbody>
+</table>
+<div class="royalty-note">* Роялти (6%) = <span id="royaltyAmt">—</span> — рассчитывается от максимального дохода, отображается справочно</div>
 
-<div class="sec">Результат · <span id="cityNameOut" style="color:#111;text-transform:none;letter-spacing:0;font-weight:600">Алматы</span></div>
+<hr/>
+<div class="sec">Для детей</div>
+<table class="tbl">
+  <thead><tr><th>Статья</th><th class="r" style="width:130px">Сумма ₸</th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="name">Питание (человекодней)</td>
+      <td style="text-align:right"><input class="rate-inp" type="number" id="food" value="800000" min="0" step="10000" oninput="recalc()"/></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+<div class="sec">Результат · <span id="cityLabel" style="color:#111;text-transform:none;letter-spacing:0;font-weight:700">Алматы / Астана</span></div>
 
 <div class="metrics">
   <div class="mc">
-    <div class="ml">Выручка / мес</div>
-    <div class="mv" id="rev">—</div>
-    <div class="ms" id="revSub">—</div>
+    <div class="ml">Макс. выручка / мес</div>
+    <div class="mv" id="revMax">—</div>
+    <div class="ms" id="revKids">—</div>
   </div>
   <div class="mc">
-    <div class="ml">Расходы / мес</div>
-    <div class="mv" id="exp">—</div>
+    <div class="ml">Итого расходы / мес</div>
+    <div class="mv" id="expTotal">—</div>
   </div>
   <div class="mc hi">
-    <div class="ml">Прибыль / мес</div>
-    <div class="mv" id="profit">—</div>
-    <div class="ms" id="margin">—</div>
+    <div class="ml">Прибыль 100%</div>
+    <div class="mv" id="profit100">—</div>
+    <div class="ms" id="margin100">—</div>
   </div>
-  <div class="mc">
-    <div class="ml">Прибыль / год</div>
-    <div class="mv" id="annual">—</div>
+  <div class="mc warn">
+    <div class="ml">Прибыль 85%</div>
+    <div class="mv" id="profit85">—</div>
+    <div class="ms">с учётом отпусков</div>
   </div>
 </div>
 
 <div class="two-col">
   <div>
-    <div class="stat-label">При 85% заполняемости</div>
-    <div class="stat-val" id="p85" style="color:#BA7517">—</div>
+    <div class="stat-label">Прибыль за год (100%)</div>
+    <div class="stat-val" id="annual" style="color:#0F6E56">—</div>
   </div>
   <div>
-    <div class="stat-label">Вступит. взнос × все дети (разово)</div>
-    <div class="stat-val" id="entry" style="color:#111">—</div>
+    <div class="stat-label">Вступит. взносы — разово</div>
+    <div class="stat-val" id="entryTotal" style="color:#111">—</div>
   </div>
-</div>
-
-<hr/>
-
-<div class="sec">Структура расходов</div>
-<div class="exp-grid" id="expGrid"></div>
-
-<hr/>
-
-<div class="sec">Окупаемость инвестиций</div>
-<div style="display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:6px">
-  <span>Стартовые инвестиции: <strong id="invest" style="color:#111">—</strong></span>
-  <span>Срок окупаемости: <strong id="payback" style="color:#0F6E56">—</strong></span>
-</div>
-<div class="pb-wrap">
-  <div class="pb-bar"><div class="pb-fill" id="pbFill" style="width:0%"></div></div>
-  <div class="pb-note"><span>0</span><span>12 мес</span><span>24 мес</span><span>36 мес</span></div>
 </div>
 
 <div class="chart-wrap">
-  <canvas id="chart" role="img" aria-label="Прогноз прибыли по месяцам (сентябрь–август) с учётом казахстанской сезонности">Прогноз прибыли по месяцам</canvas>
+  <canvas id="chart" role="img" aria-label="Прогноз прибыли по месяцам">Прогноз по месяцам</canvas>
 </div>
 
-<div class="note-box">
-  <strong>Что входит в расчёт:</strong> ФОТ 13 сотрудников, аренда, роялти 6%, питание, коммунальные услуги, налог, КСК, хозтовары, канцелярия, Интернет, Индиго. Сезонность по казахстанскому учебному календарю.
+<div class="info-box">
+  <b>Формулы из финмодели:</b><br>
+  Макс. доход = (дот. дети × (абонемент + дотация)) + (коммерч. дети × тариф)<br>
+  Прибыль 100% = Макс. доход − (ФОТ + Обслуживание + Питание)<br>
+  Прибыль 85% = (Макс. доход × 0.85) − (ФОТ + Обслуживание + Питание)<br>
+  Роялти = 6% от макс. дохода — справочно, не вычитается из расходов
 </div>
 
-<a class="cta" id="ctaBtn" href="#" onclick="handleCTA(event)">
-  Получить полный бизнес-план для моего города →
-</a>
-<div class="footer-note">Расчёт носит ориентировочный характер и основан на реальной финансовой модели Mega Kids</div>
+<a class="cta" id="ctaBtn" href="#">Получить полный бизнес-план →</a>
+<div class="footer-note">На основе реальной финансовой модели Mega Kids · до 50 детей</div>
 
 <script>
 const CITIES = {
-  small:  { dotFee:60000,  govDot:20000, comFee:80000,  rent:700000,  fot:1100000, food:10000, dotKids:30, comKids:3 },
-  medium: { dotFee:100000, govDot:35000, comFee:120000, rent:1500000, fot:1700000, food:13000, dotKids:40, comKids:4 },
-  large:  { dotFee:130000, govDot:45000, comFee:150000, rent:2200000, fot:2200000, food:14000, dotKids:43, comKids:4 },
-  almaty: { dotFee:170000, govDot:56000, comFee:190000, rent:3500000, fot:2710000, food:16000, dotKids:45, comKids:5 },
+  small:{
+    label:'Малый город', dotKids:25, parentFee:65000, govDot:22000, comKids:3, comFee:85000, entryFee:30000,
+    fot:{ admin:200000, vospit:[2,150000], nyanya:[3,120000], povar:200000, med:50000, karat:50000, muz:50000, horeog:50000, logop:50000, buh:50000, teh:40000, eng:50000, smm:80000, ohrana:40000 },
+    obs:{ kom:80000, inet:10000, ksk:30000, reklama:50000, khoz:50000, kancl:50000, nalog:120000, indigo:50000, kredit:700000 },
+    food:320000
+  },
+  medium:{
+    label:'Средний город', dotKids:35, parentFee:110000, govDot:40000, comKids:4, comFee:130000, entryFee:40000,
+    fot:{ admin:280000, vospit:[2,200000], nyanya:[3,180000], povar:280000, med:65000, karat:65000, muz:65000, horeog:65000, logop:65000, buh:65000, teh:45000, eng:65000, smm:120000, ohrana:45000 },
+    obs:{ kom:120000, inet:12000, ksk:40000, reklama:80000, khoz:65000, kancl:65000, nalog:180000, indigo:60000, kredit:1600000 },
+    food:520000
+  },
+  large:{
+    label:'Крупный город', dotKids:40, parentFee:140000, govDot:50000, comKids:4, comFee:160000, entryFee:45000,
+    fot:{ admin:320000, vospit:[3,260000], nyanya:[3,220000], povar:320000, med:75000, karat:75000, muz:75000, horeog:75000, logop:75000, buh:75000, teh:48000, eng:75000, smm:140000, ohrana:48000 },
+    obs:{ kom:140000, inet:14000, ksk:45000, reklama:90000, khoz:75000, kancl:75000, nalog:220000, indigo:65000, kredit:2500000 },
+    food:680000
+  },
+  almaty:{
+    label:'Алматы / Астана', dotKids:45, parentFee:170000, govDot:58000, comKids:5, comFee:190000, entryFee:50000,
+    fot:{ admin:350000, vospit:[3,300000], nyanya:[4,250000], povar:350000, med:80000, karat:80000, muz:80000, horeog:80000, logop:80000, buh:80000, teh:50000, eng:80000, smm:150000, ohrana:50000 },
+    obs:{ kom:150000, inet:16000, ksk:50000, reklama:100000, khoz:80000, kancl:80000, nalog:250000, indigo:70000, kredit:3500000 },
+    food:800000
+  }
 };
 
+let state = {};
+
+function initState(city) {
+  const c = CITIES[city];
+  state = {
+    dotKids:c.dotKids, parentFee:c.parentFee, govDot:c.govDot,
+    comKids:c.comKids, comFee:c.comFee, entryFee:c.entryFee,
+    fot:JSON.parse(JSON.stringify(c.fot)),
+    obs:{...c.obs},
+    food:c.food
+  };
+}
+
 function applyCity(key, btn) {
-  const p = CITIES[key];
-  document.querySelectorAll('.cbtn').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
-  document.getElementById('dotFee').value  = p.dotFee;
-  document.getElementById('govDot').value  = p.govDot;
-  document.getElementById('comFee').value  = p.comFee;
-  document.getElementById('rent').value    = p.rent;
-  document.getElementById('fot').value     = p.fot;
-  document.getElementById('food').value    = p.food;
-  document.getElementById('dotKids').value = p.dotKids;
-  document.getElementById('comKids').value = p.comKids;
-  recalc();
+  document.getElementById('cityLabel').textContent = CITIES[key].label;
+  initState(key);
+  setSlider('dotKids',state.dotKids); setSlider('parentFee',state.parentFee);
+  setSlider('govDot',state.govDot);   setSlider('comKids',state.comKids);
+  setSlider('comFee',state.comFee);   setSlider('entryFee',state.entryFee);
+  setSlider('occ',100);
+  document.getElementById('food').value = state.food;
+  renderFOT(); renderObs(); recalc();
 }
 
-function fmt(n) {
-  return Math.round(n).toLocaleString('ru-RU') + ' ₸';
+function setSlider(id,val){ document.getElementById(id).value=val; }
+
+const FOT_DEFS = [
+  {key:'admin', label:'Администратор',  hasQty:false},
+  {key:'vospit',label:'Воспитатель',    hasQty:true},
+  {key:'nyanya',label:'Няня',           hasQty:true},
+  {key:'povar', label:'Повар',          hasQty:false},
+  {key:'med',   label:'Медсестра',      hasQty:false},
+  {key:'karat', label:'Карате',         hasQty:false},
+  {key:'muz',   label:'Музыкант',       hasQty:false},
+  {key:'horeog',label:'Хореограф',      hasQty:false},
+  {key:'logop', label:'Логопед',        hasQty:false},
+  {key:'buh',   label:'Бухгалтер',      hasQty:false},
+  {key:'teh',   label:'Тех. персонал',  hasQty:false},
+  {key:'eng',   label:'Английский',     hasQty:false},
+  {key:'smm',   label:'SMM',            hasQty:false},
+  {key:'ohrana',label:'Охрана',         hasQty:false},
+];
+
+function renderFOT() {
+  const tbody = document.getElementById('fotBody');
+  tbody.innerHTML = '';
+  FOT_DEFS.forEach(def => {
+    const tr = document.createElement('tr');
+    if (def.hasQty) {
+      const [qty,rate] = state.fot[def.key];
+      tr.innerHTML = `<td class="name">${def.label}</td>
+        <td style="text-align:right"><input class="qty-inp" type="number" min="1" max="20" value="${qty}" oninput="updateFotQty('${def.key}',this.value)"/></td>
+        <td style="text-align:right"><input class="rate-inp" type="number" min="0" step="5000" value="${rate}" oninput="updateFotRate('${def.key}',this.value)"/></td>
+        <td class="sub-total" id="fot_${def.key}">${fmt(qty*rate)}</td>`;
+    } else {
+      const amt = state.fot[def.key];
+      tr.innerHTML = `<td class="name">${def.label}</td>
+        <td style="text-align:right;color:#ccc;font-size:12px">1</td>
+        <td style="text-align:right"><input class="rate-inp" type="number" min="0" step="5000" value="${amt}" oninput="updateFotFixed('${def.key}',this.value)"/></td>
+        <td class="sub-total" id="fot_${def.key}">${fmt(amt)}</td>`;
+    }
+    tbody.appendChild(tr);
+  });
 }
 
-let chart = null;
+function updateFotQty(key,val){state.fot[key][0]=+val||1;refreshFotRow(key);recalc();}
+function updateFotRate(key,val){state.fot[key][1]=+val||0;refreshFotRow(key);recalc();}
+function updateFotFixed(key,val){state.fot[key]=+val||0;refreshFotRow(key);recalc();}
+function refreshFotRow(key){
+  const el=document.getElementById('fot_'+key); if(!el)return;
+  const v=state.fot[key];
+  el.textContent=fmt(Array.isArray(v)?v[0]*v[1]:v);
+}
+function calcFOT(){
+  return FOT_DEFS.reduce((s,def)=>{const v=state.fot[def.key];return s+(Array.isArray(v)?v[0]*v[1]:v);},0);
+}
 
-function recalc() {
-  const dotKids = +document.getElementById('dotKids').value;
-  const dotFee  = +document.getElementById('dotFee').value;
-  const govDot  = +document.getElementById('govDot').value;
-  const comKids = +document.getElementById('comKids').value;
-  const comFee  = +document.getElementById('comFee').value;
-  const occ     = +document.getElementById('occ').value / 100;
-  const rent    = +document.getElementById('rent').value;
-  const fot     = +document.getElementById('fot').value;
-  const food    = +document.getElementById('food').value;
-  const city    = document.getElementById('cityName').value || 'Ваш город';
+const OBS_DEFS = [
+  {key:'kom',    label:'Коммунальные услуги'},
+  {key:'inet',   label:'Интернет'},
+  {key:'ksk',    label:'КСК'},
+  {key:'reklama',label:'Реклама'},
+  {key:'khoz',   label:'Закуп хозтоваров'},
+  {key:'kancl',  label:'Закуп канцелярии'},
+  {key:'nalog',  label:'Налог'},
+  {key:'indigo', label:'Индиго'},
+  {key:'kredit', label:'Кредит на помещение / аренда'},
+];
 
-  document.getElementById('cityNameOut').textContent = city;
-  document.getElementById('dotKidsV').textContent = dotKids + ' дет.';
-  document.getElementById('dotFeeV').textContent  = Math.round(dotFee).toLocaleString('ru-RU') + ' ₸';
-  document.getElementById('govDotV').textContent  = Math.round(govDot).toLocaleString('ru-RU') + ' ₸';
-  document.getElementById('comKidsV').textContent = comKids + ' дет.';
-  document.getElementById('comFeeV').textContent  = Math.round(comFee).toLocaleString('ru-RU') + ' ₸';
-  document.getElementById('occV').textContent     = Math.round(occ * 100) + '%';
-  document.getElementById('rentV').textContent    = Math.round(rent).toLocaleString('ru-RU') + ' ₸';
-  document.getElementById('fotV').textContent     = Math.round(fot).toLocaleString('ru-RU') + ' ₸';
-  document.getElementById('foodV').textContent    = Math.round(food).toLocaleString('ru-RU') + ' ₸';
+function renderObs(){
+  const tbody=document.getElementById('obsBody');
+  tbody.innerHTML='';
+  OBS_DEFS.forEach(def=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="name">${def.label}</td>
+      <td style="text-align:right"><input class="rate-inp" type="number" min="0" step="10000" value="${state.obs[def.key]}" oninput="updateObs('${def.key}',this.value)"/></td>`;
+    tbody.appendChild(tr);
+  });
+}
 
-  const totalKids  = dotKids + comKids;
-  const revMax     = dotKids * (dotFee + govDot) + comKids * comFee;
-  const revCurrent = revMax * occ;
-  const entryTotal = totalKids * 70000;
+function updateObs(key,val){state.obs[key]=+val||0;recalc();}
+function calcObs(){return OBS_DEFS.reduce((s,def)=>s+(state.obs[def.key]||0),0);}
+function fmt(n){return Math.round(n).toLocaleString('ru-RU')+' ₸';}
 
-  const royalty    = Math.round(revMax * 0.06);
-  const foodTotal  = Math.round(totalKids * food * occ);
-  const komm       = 150000;
-  const internet   = 16000;
-  const ksk        = 50000;
-  const khoztovary = 80000;
-  const kancl      = 80000;
-  const nalog      = 250000;
-  const indigo     = 70000;
-  const opOther    = komm + internet + ksk + khoztovary + kancl + nalog + indigo;
-  const totalExp   = fot + rent + royalty + opOther + foodTotal;
+let chart=null;
 
-  const profit  = revCurrent - totalExp;
-  const margin  = revCurrent > 0 ? Math.round((profit / revCurrent) * 100) : 0;
-  const annual  = profit * 12;
+function recalc(){
+  const dotKids  =+document.getElementById('dotKids').value;
+  const parentFee=+document.getElementById('parentFee').value;
+  const govDot   =+document.getElementById('govDot').value;
+  const comKids  =+document.getElementById('comKids').value;
+  const comFee   =+document.getElementById('comFee').value;
+  const entryFee =+document.getElementById('entryFee').value;
+  const occ      =+document.getElementById('occ').value/100;
+  const food     =+document.getElementById('food').value||0;
+  state.food=food;
 
-  const rev85   = revMax * 0.85;
-  const food85  = Math.round(totalKids * food * 0.85);
-  const p85val  = rev85 - (fot + rent + royalty + opOther + food85);
+  document.getElementById('dotKidsV').textContent  =dotKids+' дет.';
+  document.getElementById('parentFeeV').textContent=Math.round(parentFee).toLocaleString('ru-RU')+' ₸';
+  document.getElementById('govDotV').textContent   =Math.round(govDot).toLocaleString('ru-RU')+' ₸';
+  document.getElementById('comKidsV').textContent  =comKids+' дет.';
+  document.getElementById('comFeeV').textContent   =Math.round(comFee).toLocaleString('ru-RU')+' ₸';
+  document.getElementById('entryFeeV').textContent =Math.round(entryFee).toLocaleString('ru-RU')+' ₸';
+  document.getElementById('occV').textContent      =Math.round(occ*100)+'%';
 
-  const investAmt  = rent * 2 + 1000000;
-  const paybackMon = profit > 0 ? Math.ceil(investAmt / profit) : 99;
+  const totalKids  = dotKids+comKids;
+  const revMax     = dotKids*(parentFee+govDot)+comKids*comFee;
+  const rev85      = revMax*0.85;
+  const entryTotal = totalKids*entryFee;
+  const royalty    = Math.round(revMax*0.06);
+  document.getElementById('royaltyAmt').textContent=fmt(royalty);
 
-  document.getElementById('rev').textContent    = fmt(revCurrent);
-  document.getElementById('revSub').textContent = totalKids + ' детей · ' + Math.round(occ * 100) + '%';
-  document.getElementById('exp').textContent    = fmt(totalExp);
-  document.getElementById('profit').textContent = fmt(profit);
-  document.getElementById('margin').textContent = 'маржа ' + margin + '%';
-  document.getElementById('annual').textContent = fmt(annual);
-  document.getElementById('p85').textContent    = fmt(p85val);
-  document.getElementById('entry').textContent  = fmt(entryTotal);
-  document.getElementById('invest').textContent = fmt(investAmt);
-  document.getElementById('payback').textContent = paybackMon < 99 ? paybackMon + ' мес.' : '> 36 мес.';
+  const fotSum  = calcFOT();
+  const obsSum  = calcObs();
+  const totalExp= fotSum+obsSum+food;
 
-  const pbPct = Math.min(100, Math.round((paybackMon / 36) * 100));
-  document.getElementById('pbFill').style.width = pbPct + '%';
+  document.getElementById('fotTotal').textContent='— '+fmt(fotSum);
+  document.getElementById('obsTotal').textContent='— '+fmt(obsSum);
 
-  const items = [
-    ['ФОТ (персонал)', fot],
-    ['Аренда', rent],
-    ['Роялти 6%', royalty],
-    ['Питание', foodTotal],
-    ['Коммун. услуги', komm],
-    ['Налог', nalog],
-    ['Хозтовары', khoztovary],
-    ['Канцелярия', kancl],
-    ['КСК', ksk],
-    ['Индиго', indigo],
-    ['Интернет', internet],
-  ];
-  document.getElementById('expGrid').innerHTML = items.map(([n, v]) =>
-    `<div class="er"><span class="en">${n}</span><span class="ev">${fmt(v)}</span></div>`
-  ).join('');
+  const profit100=revMax-totalExp;
+  const profit85 =rev85-totalExp;
+  const margin100=revMax>0?Math.round((profit100/revMax)*100):0;
+  const annual   =profit100*12;
 
-  const months = ['Сен','Окт','Ноя','Дек','Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг'];
-  const seas   = [1.0, 1.0, 1.0, 0.95, 0.90, 0.92, 0.95, 0.95, 0.85, 0.70, 0.60, 0.75];
-  const data   = seas.map(s => Math.round(profit * s));
+  document.getElementById('revMax').textContent    =fmt(revMax);
+  document.getElementById('revKids').textContent   =totalKids+' детей · '+Math.round(occ*100)+'%';
+  document.getElementById('expTotal').textContent  =fmt(totalExp);
+  document.getElementById('profit100').textContent =fmt(profit100);
+  document.getElementById('margin100').textContent ='маржа '+margin100+'%';
+  document.getElementById('profit85').textContent  =fmt(profit85);
+  document.getElementById('annual').textContent    =fmt(annual);
+  document.getElementById('entryTotal').textContent=fmt(entryTotal);
 
-  if (chart) {
-    chart.data.datasets[0].data = data;
-    chart.data.datasets[0].backgroundColor = data.map(v => v >= 0 ? '#1D9E75' : '#E24B4A');
+  const months=['Сен','Окт','Ноя','Дек','Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг'];
+  const seas  =[1.0,1.0,0.98,0.95,0.90,0.92,0.95,0.95,0.85,0.70,0.60,0.75];
+  const data  =seas.map(s=>Math.round(profit100*s));
+
+  if(chart){
+    chart.data.datasets[0].data=data;
+    chart.data.datasets[0].backgroundColor=data.map(v=>v>=0?'#1D9E75':'#E24B4A');
     chart.update();
   } else {
-    chart = new Chart(document.getElementById('chart'), {
-      type: 'bar',
-      data: {
-        labels: months,
-        datasets: [{ label: 'Прибыль', data: data,
-          backgroundColor: data.map(v => v >= 0 ? '#1D9E75' : '#E24B4A'),
-          borderRadius: 4 }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { grid: { display: false }, ticks: { font: { size: 11 } } },
-          y: { grid: { color: 'rgba(0,0,0,0.05)' },
-               ticks: { font: { size: 10 }, callback: v => {
-                 const a = Math.abs(Math.round(v / 1000));
-                 return (v < 0 ? '-' : '') + a + 'K ₸';
-               }}}
+    chart=new Chart(document.getElementById('chart'),{
+      type:'bar',
+      data:{labels:months,datasets:[{label:'Прибыль',data,backgroundColor:data.map(v=>v>=0?'#1D9E75':'#E24B4A'),borderRadius:4}]},
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false}},
+        scales:{
+          x:{grid:{display:false},ticks:{font:{size:11}}},
+          y:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:10},callback:v=>{const a=Math.abs(Math.round(v/1000));return(v<0?'-':'')+a+'K ₸';}}}
         }
       }
     });
   }
 }
 
-function handleCTA(e) {
+document.getElementById('ctaBtn').addEventListener('click',e=>{
   e.preventDefault();
-  // Замените ссылку ниже на вашу форму / WhatsApp / CRM
-  const city = document.getElementById('cityName').value || 'Ваш город';
-  const url = 'https://wa.me/ВАШНОМЕР?text=' + encodeURIComponent('Хочу получить бизнес-план для города: ' + city);
-  window.open(url, '_blank');
-}
+  const wa  =document.getElementById('waNumber').value.replace(/\D/g,'');
+  const city=document.getElementById('cityLabel').textContent;
+  const p100=document.getElementById('profit100').textContent;
+  const msg =encodeURIComponent('Здравствуйте! Рассчитал прибыль детского сада в городе '+city+'. Прибыль 100%: '+p100+'. Хочу получить полный бизнес-план.');
+  window.open('https://wa.me/77776557093'+wa+'?text='+msg,'_blank');
+});
 
+initState('almaty');
+renderFOT();
+renderObs();
 recalc();
 </script>
 </body>
